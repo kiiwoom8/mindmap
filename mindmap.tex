@@ -77,6 +77,11 @@
                                     \href{run:./programming/game/game.pdf}{Game}
                                 }
                         }
+                    child{
+                            node(git){
+                                    \href{./git/git.pdf}{Git}
+                                }
+                        }
                 }
             %Mathematics
             child[concept color=red!30!green!100!blue!100, text width=2.5cm]{
@@ -92,8 +97,7 @@
             %Physics
             child[concept color=red!20!green!20!blue!100]{
                     node(physics){
-                            \hyperref[sec:physics]{\textcolor{white}{Physics}
-                            }
+                            \href{./physics/physics.pdf}{\textcolor{white}{Physics}}
                         }
                     child{
                             node(electronics){
@@ -174,7 +178,7 @@
                 \includegraphics[width=1cm,height=1cm]{./image/math.png}
             };
             \node[text width=.8cm, text height=.8cm,yshift=-.65cm] at (physics) {
-                \includegraphics[width=.8cm,height=.8cm]{./image/lever3.png}
+                \href{./physics/physics.pdf}{\includegraphics[width=.8cm,height=.8cm]{./image/lever3.png}}
             };
             \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (tex) {
                 \includegraphics[width=.5cm,height=.5cm]{./image/tex.png}
@@ -214,6 +218,9 @@
             };
             \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (game) {
                 \includegraphics[width=.5cm,height=.5cm]{./image/game.png}
+            };
+            \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (git) {
+                \href{./git/git.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/git.png}}
             };
         \end{pgfonlayer}
     \end{tikzpicture}
