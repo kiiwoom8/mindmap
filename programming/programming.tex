@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper,hidelinks]{article}
 
 \usepackage{ulem}
 \usepackage{incgraph}
@@ -9,7 +9,7 @@
 \usetikzlibrary{mindmap,shadows,calendar,fadings}
 \tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
 \hypersetup{
-    colorlinks=true,
+    colorlinks=false,
     linkcolor=black,
     filecolor=magenta,      
     urlcolor=cyan,
@@ -29,9 +29,14 @@
                 every node/.append style={concept,circular drop shadow},
                 level 1/.append style={sibling angle=360/5}
             ]
-            \node[root concept,](main){
-                \href{run:../mindmap.pdf}{Programming}
+            \node[root concept, fill=white](programming){
+                \href{../mindmap.pdf}{Programming}
             }
+            child{
+                    node{
+                            Sub
+                        }
+                }
             ;
         \end{scope}
         % ------------------------ background ------------------------ %
@@ -40,7 +45,9 @@
         \end{pgfonlayer}
         % ------------------------ foreground ------------------------ %
         \begin{pgfonlayer}{foreground}
-
+            \node[text width=1cm, text height=1cm,yshift=-1cm] at (programming) {
+                \href{../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../image/computer.png}}
+            };
         \end{pgfonlayer}
     \end{tikzpicture}
 \end{inctext}

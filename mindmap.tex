@@ -64,7 +64,7 @@
                         }
                     child{
                             node(tex){
-                                    \hyperref[sec:tex]{TEX}
+                                    \href{./programming/tex/tex.pdf}{TEX}
                                 }
                             child{
                                     node(latex){
@@ -86,7 +86,7 @@
             %Mathematics
             child[concept color=red!30!green!100!blue!100, text width=2.5cm]{
                     node(math){
-                            \hyperref[sec:math]{Mathematics}
+                            \href{./mathematics/mathematics.pdf}{Mathematics}
                         }
                     child[text width=2.5cm,level distance=4cm]{
                             node(dismath){
@@ -169,19 +169,19 @@
                 \includegraphics[width=1cm,height=1cm]{./image/book2.png}
             };
             \node[text width=1cm, text height=1cm,yshift=-.8cm] at (programming) {
-                \includegraphics[width=1cm,height=1cm]{./image/computer.png}
+                \href{./programming/programming.pdf}{\includegraphics[width=1cm,height=1cm]{./image/computer.png}}
             };
-            \node[text width=.8cm, text height=.8cm,yshift=-.6cm] at (chemistry) {
+            \node[text width=.8cm, text height=.8cm,yshift=-.65cm] at (chemistry) {
                 \href{./chemistry/chemistry.pdf}{\includegraphics[width=.8cm,height=.8cm]{./image/atom.png}}
             };
             \node[text width=1cm, text height=1cm,yshift=-.7cm] at (math) {
-                \includegraphics[width=1cm,height=1cm]{./image/math.png}
+                \href{./mathematics/mathematics.pdf}{\includegraphics[width=1cm,height=1cm]{./image/math.png}}
             };
             \node[text width=.8cm, text height=.8cm,yshift=-.65cm] at (physics) {
                 \href{./physics/physics.pdf}{\includegraphics[width=.8cm,height=.8cm]{./image/lever3.png}}
             };
             \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (tex) {
-                \includegraphics[width=.5cm,height=.5cm]{./image/tex.png}
+                \href{./programming/tex/tex.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/tex.png}}
             };
             \node[text width=.8cm, text height=.8cm,yshift=-.7cm] at (ce) {
                 \includegraphics[width=.8cm,height=.8cm]{./image/engineering.png}
@@ -193,13 +193,13 @@
                 \includegraphics[width=.6cm,height=.6cm]{./image/javascript.png}
             };
             \node[text width=.4cm, text height=.4cm,yshift=-.35cm] at (linux) {
-                \includegraphics[width=.4cm,height=.4cm]{./image/linux.png}
+                \href{./computer_engineering/os/linux/linux.pdf}{\includegraphics[width=.4cm,height=.4cm]{./image/linux.png}}
             };
             \node[text width=.4cm, text height=.4cm,yshift=-.6cm] at (os) {
                 \includegraphics[width=.4cm,height=.4cm]{./image/os.png}
             };
             \node[text width=.9cm, text height=.9cm,yshift=-.85cm] at (dismath) {
-                \includegraphics[width=.9cm,height=.9cm]{./image/dismath.png}
+                \href{./mathematics/discrete_mathematics/discrete_mathematics.pdf}{\includegraphics[width=.9cm,height=.9cm]{./image/dismath.png}}
             };
             \node[text width=.9cm, text height=.9cm,yshift=-.5cm] at (cpp) {
                 \includegraphics[width=.9cm,height=.9cm]{./image/cpp.png}
@@ -217,7 +217,7 @@
                 \href{./physics/electronics/electronics.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/electronics2.png}}
             };
             \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (game) {
-                \includegraphics[width=.5cm,height=.5cm]{./image/game.png}
+                \href{./programming/game/game.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/game.png}}
             };
             \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (git) {
                 \href{./git/git.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/git.png}}

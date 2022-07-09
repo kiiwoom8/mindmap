@@ -27,10 +27,10 @@
                 grow cyclic,
                 concept color=red!60!green!100!blue!20,
                 every node/.append style={concept,circular drop shadow},
-                level 1/.append style={sibling angle=360/5}
+                %level 1/.append style={sibling angle=360/6}
             ]
             \node[root concept, fill=white](latex){
-                \href{../../../mindmap.pdf}{\LaTeX}
+                \href{../tex.pdf}{\LaTeX}
             }
             child{
                     node(pgf){
@@ -65,6 +65,21 @@
             child{
                     node{
                             \href{https://tex.stackexchange.com/questions/512420/auto-adjust-the-width-of-tcolorbox-right-hand-side}{tcb\\listing}
+                        }
+                }
+            child{
+                    node{
+                            \href{https://www.dickimaw-books.com/latex/novices/html/auxiliary.html}{Auxiliary Files}
+                        }
+                    child{
+                            node{
+                                    \href{https://www.dickimaw-books.com/latex/novices/html/crossref.html\#sec:crossref}{Cross Referencing}
+                                }
+                            child {
+                                    node{
+                                            \href{https://texfaq.org/FAQ-extref}{Referring to labels in other Documents}
+                                        }
+                                }
                         }
                 }
             ;
