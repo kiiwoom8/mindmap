@@ -1,0 +1,79 @@
+\documentclass[12pt,a4paper,hidelinks]{article}
+
+\usepackage{ulem}
+\usepackage{incgraph}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\newcommand{\leftcoordinate}{-15cm}
+\usetikzlibrary{mindmap,shadows,calendar,fadings}
+\tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\begin{inctext}
+    \begin{tikzpicture}
+        \pgfdeclarelayer{background}
+        \pgfdeclarelayer{foreground}
+        \pgfsetlayers{background,main,foreground}
+        % ------------------------ declare mindmap ------------------------ %
+        \begin{scope}[
+                mindmap,
+                grow cyclic,
+                concept color=red!60!green!100!blue!20,
+                every node/.append style={concept,circular drop shadow},
+                level 1/.append style={sibling angle=360/5}
+            ]
+            \node[root concept, fill=white](mysql){
+                \href{../programming.pdf}{MySQL}
+            }
+            child{
+                    node{
+                            \href{https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04}{Install}
+                        }
+                    child{
+                            node{
+                                    \href{https://askubuntu.com/questions/1251816/mysqld-cant-read-dir-of-etc-mysql-conf-d-os-errno-2-no-such-file-or-dir}{/etc/\\mysql/\\conf.d/}
+                                }
+                        }
+                    child{
+                            node{
+                                    \href{https://stackoverflow.com/questions/42153059/mysqld-safe-directory-var-run-mysqld-for-unix-socket-file-dont-exists}{/var/\\run/\\mysqld/}
+                                }
+                        }
+                    child{
+                            node{
+                                    \href{https://westonganger.com/posts/fix-mysql-error-1524-hy000-plugin-auth_socket-is-not-loaded-in-mysql-5-7}{auth\_\\socket}
+                                }
+                        }
+                }
+            child{
+                    node(lsod){
+                            \href{run:../../../../Documents/learn_sql_in_one_day.pdf}{Learn SQL in One Day}
+                        }
+                }
+            ;
+        \end{scope}
+        % ------------------------ background ------------------------ %
+        \begin{pgfonlayer}{background}
+
+        \end{pgfonlayer}
+        % ------------------------ foreground ------------------------ %
+        \begin{pgfonlayer}{foreground}
+            \node[text width=1cm, text height=1cm,yshift=-1cm] at (mysql) {
+                \href{run:../../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../../image/mysql.png}}
+            };
+            \node[text width=.8cm, text height=.8cm,yshift=-.8cm] at (lsod) {
+                \includegraphics[width=.8cm,height=.8cm]{../../image/book2.png}
+            };
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{inctext}
+%------------------------------------------------------------ List ------------------------------------------------------------%
+\newpage
+\end{document}

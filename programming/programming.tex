@@ -1,0 +1,49 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{ulem}
+\usepackage{incgraph}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\newcommand{\leftcoordinate}{-15cm}
+\usetikzlibrary{mindmap,shadows,calendar,fadings}
+\tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\begin{inctext}
+    \begin{tikzpicture}
+        \pgfdeclarelayer{background}
+        \pgfdeclarelayer{foreground}
+        \pgfsetlayers{background,main,foreground}
+        % ------------------------ declare mindmap ------------------------ %
+        \begin{scope}[
+                mindmap,
+                grow cyclic,
+                concept color=red!60!green!100!blue!20,
+                every node/.append style={concept,circular drop shadow},
+                level 1/.append style={sibling angle=360/5}
+            ]
+            \node[root concept,](main){
+                \href{run:../mindmap.pdf}{Programming}
+            }
+            ;
+        \end{scope}
+        % ------------------------ background ------------------------ %
+        \begin{pgfonlayer}{background}
+
+        \end{pgfonlayer}
+        % ------------------------ foreground ------------------------ %
+        \begin{pgfonlayer}{foreground}
+
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{inctext}
+%------------------------------------------------------------ List ------------------------------------------------------------%
+\newpage
+\end{document}

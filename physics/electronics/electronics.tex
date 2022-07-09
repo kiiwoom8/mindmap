@@ -1,0 +1,84 @@
+\documentclass[12pt,a4paper,hidelinks]{article}
+
+\usepackage{ulem}
+\usepackage{incgraph}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\newcommand{\leftcoordinate}{-15cm}
+\usetikzlibrary{mindmap,shadows,calendar,fadings}
+\tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=black,
+}
+
+\begin{document}
+\begin{inctext}
+    \begin{tikzpicture}
+        \pgfdeclarelayer{background}
+        \pgfdeclarelayer{foreground}
+        \pgfsetlayers{background,main,foreground}
+        % ------------------------ declare mindmap ------------------------ %
+        \begin{scope}[
+                mindmap,
+                grow cyclic,
+                concept color=red!20!green!20!blue!100,
+                every node/.append style={concept,circular drop shadow,text=white},
+                level 1/.append style={sibling angle=360/5}
+            ]
+            \node[root concept, fill=black](elec){
+                \href{run:../../mindmap.pdf}{Electronics}
+            }
+            child{
+                    node{
+                            \href{https://www.youtube.com/watch?v=w82aSjLuD_8}{What is Voltage?}
+                        }
+                    child{
+                            node{
+                                    \href{https://www.science.org.au/curious/technology-future/batteries}{How a battery works}
+                                }
+                        }
+                }
+            child{
+                    node(tae){
+                            \href{run:../../../../Documents/the_art_of_electronics.pdf}{The Art of Electronics}
+                        }
+                }
+            child{
+                    node(transf){
+                            \href{https://www.youtube.com/watch?v=agujzHdvtjc}{Trans\-formers}
+                        }
+                    child{
+                            node{
+                                    \href{https://www.explainthatstuff.com/transformers.html}{Electricity Transformers}
+                                }
+                        }
+                }
+            child{
+                    node{
+                            \href{https://www.youtube.com/watch?v=mvuHsu8S6v8}{Volts, Amps, and Watts}
+                        }
+                }
+            ;
+        \end{scope}
+        % ------------------------ background ------------------------ %
+        \begin{pgfonlayer}{background}
+
+        \end{pgfonlayer}
+        % ------------------------ foreground ------------------------ %
+        \begin{pgfonlayer}{foreground}
+            \node[text width=1cm, text height=1cm,yshift=-1cm] at (elec) {
+                \href{../../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../../image/electronics2.png}}
+            };
+            \node[text width=1cm, text height=1cm,yshift=-.8cm] at (tae) {
+                \includegraphics[width=1cm,height=1cm]{../../image/book2_2.png}
+            };
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{inctext}
+%------------------------------------------------------------ List ------------------------------------------------------------%
+\newpage
+\end{document}
