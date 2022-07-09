@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper,hidelinks]{article}
+
+\usepackage{ulem}
+\usepackage{incgraph}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\newcommand{\leftcoordinate}{-15cm}
+\usetikzlibrary{mindmap,shadows,calendar,fadings}
+\tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\begin{inctext}
+    \begin{tikzpicture}
+        \pgfdeclarelayer{background}
+        \pgfdeclarelayer{foreground}
+        \pgfsetlayers{background,main,foreground}
+        % ------------------------ declare mindmap ------------------------ %
+        \begin{scope}[
+                mindmap,
+                grow cyclic,
+                concept color=red!80!green!100!blue!70,
+                every node/.append style={concept,circular drop shadow},
+                level 1/.append style={sibling angle=360/5}
+            ]
+            \node[root concept, fill=white](ce){
+                \href{../mindmap.pdf}{Computer Engineering}
+            }
+            child{
+                    node(hc){
+                            \href{../../../Documents/how_computers_really_work.pdf}{How Computers Work}
+                        }
+                }
+            ;
+        \end{scope}
+        % ------------------------ background ------------------------ %
+        \begin{pgfonlayer}{background}
+
+        \end{pgfonlayer}
+        % ------------------------ foreground ------------------------ %
+        \begin{pgfonlayer}{foreground}
+            \node[text width=1.5cm, text height=1.5cm,yshift=-1.2cm] at (ce) {
+                \href{../mindmap.pdf}{\includegraphics[width=1.5cm,height=1.5cm]{../image/engineering.png}}
+            };
+            \node[text width=.6cm, text height=.6cm,yshift=-.9cm] at (hc) {
+                \includegraphics[width=.6cm,height=.6cm]{../image/book2.png}
+            };
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{inctext}
+%------------------------------------------------------------ List ------------------------------------------------------------%
+\newpage
+\end{document}

@@ -1,0 +1,226 @@
+\documentclass[12pt,a4paper,hidelinks]{article}
+
+\usepackage{ulem}
+\usepackage{incgraph}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\newcommand{\leftcoordinate}{-15cm}
+\usetikzlibrary{mindmap,shadows,calendar,fadings}
+\tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\begin{inctext}
+    \begin{tikzpicture}
+        \pgfdeclarelayer{background}
+        \pgfdeclarelayer{foreground}
+        \pgfsetlayers{background,main,foreground}
+        % ------------------------ declare mindmap ------------------------ %
+        \begin{scope}[
+                mindmap,
+                grow cyclic,
+                concept color=black,
+                every node/.append style={concept,circular drop shadow},
+                level 1/.append style={sibling angle=360/5}
+            ]
+            %Study
+            \node[root concept, fill=white](study){
+                \hyperref[sec:study]{Study}
+            }
+            %Programming
+            child[every child/.append style={sibling angle=40},level distance=7cm,concept color=red!60!green!100!blue!20, text width=2.5cm]{
+                    node(programming){
+                            \href{run:./programming/programming.pdf}{Programming}
+                        }
+                    child{
+                            node(java){
+                                    \hyperref[sec:java]{JAVA}
+                                }
+                        }
+                    child{
+                            node(c){
+                                    \hyperref[sec:c]{C}}
+                        }
+                    child{
+                            node(cpp){
+                                    \hyperref[sec:cpp]{C++}
+                                }
+                        }
+                    child{
+                            node(js){
+                                    \hyperref[sec:javascript]{Javascript}
+                                }
+                        }
+                    child{
+                            node(mysql){
+                                    \href{run:./programming/mysql/mysql.pdf}{MySQL}
+                                }
+                        }
+                    child{
+                            node(tex){
+                                    \hyperref[sec:tex]{TEX}
+                                }
+                            child{
+                                    node(latex){
+                                            \href{run:./programming/tex/latex/latex.pdf}{\LaTeX}
+                                        }
+                                }
+                        }
+                    child{
+                            node(game){
+                                    \href{run:./programming/game/game.pdf}{Game}
+                                }
+                        }
+                }
+            %Mathematics
+            child[concept color=red!30!green!100!blue!100, text width=2.5cm]{
+                    node(math){
+                            \hyperref[sec:math]{Mathematics}
+                        }
+                    child[text width=2.5cm,level distance=4cm]{
+                            node(dismath){
+                                    \href{run:./mathematics/discrete_mathematics/discrete_mathematics.pdf}{Discrete Mathematics}
+                                }
+                        }
+                }
+            %Physics
+            child[concept color=red!20!green!20!blue!100]{
+                    node(physics){
+                            \hyperref[sec:physics]{\textcolor{white}{Physics}
+                            }
+                        }
+                    child{
+                            node(electronics){
+                                    \href{run:./physics/electronics/electronics.pdf}{\textcolor{white}{Electonics}}
+                                }
+                        }
+                }
+            %Chemistry
+            child[concept color=red!70!green!40!blue!50]{
+                    node(chemistry){
+                            \href{./chemistry/chemistry.pdf}{Chemistry}
+                        }
+                }
+            %Computer Engineering
+            child[concept color=red!80!green!100!blue!70]{
+                    node(ce){
+                            \href{./computer_engineering/computer_engineering.pdf}{Computer Engineering}
+                        }
+                    child{
+                            node(os){
+                                    \hyperref[sec:os]{Operating System}
+                                }
+                            child{
+                                    node(linux){
+                                            \href{./computer_engineering/os/linux/linux.pdf}{Linux}
+                                        }
+                                }
+                        }
+                };
+            % Todo
+            \node[todo,yshift=-.8cm] at (mysql.south) {TODO:\\ Install MySQL};
+        \end{scope}
+        % ------------------------ declare calendar ------------------------ %
+        \tiny
+        \calendar[
+            day list downward,
+            name=cal,
+            at={(\leftcoordinate,10cm)},
+            dates=2022-07-05 to 2022-10-01
+        ]
+        if (Sunday) [black!25]
+        if (day of month=1){
+                \node at (0pt,1.5em) [anchor=base west] {
+                    \small\tikzmonthtext\space\tikzyeartext
+                };
+            };
+        % ------------------------ calendar study list ------------------------ %
+        \node [annotation,above,anchor=west] at (cal-2022-07-05) {
+            Tikz mind map
+        };
+        \node [annotation,above,anchor=west] at (cal-2022-07-06) {
+            Discrete math exersize
+        };
+        % ------------------------ background ------------------------ %
+        \begin{pgfonlayer}{background}
+            \fill[orange] rectangle +(\leftcoordinate,11);
+            \fill[yellow] rectangle +(\leftcoordinate,-16.5);
+            \fill[pink] rectangle +(12.5,11);
+            \fill[teal] rectangle +(12.5,-16.5);
+
+            \shade[bottom color=yellow,top color=orange] (study)+(0,-1) rectangle +(\leftcoordinate,1);
+            \shade[left color=orange, right color=pink] (study)+(-1,0) rectangle +(1,11);
+            \shade[top color=pink, bottom color=teal] (study)+(0,-1) rectangle +(12.5,1);
+            \shade[left color=yellow, right color=teal] (study)+(-1,0) rectangle +(1,-16.5);
+        \end{pgfonlayer}
+        % ------------------------ foreground ------------------------ %
+        \begin{pgfonlayer}{foreground}
+            \node[text width=1cm, text height=1cm,yshift=-.8cm] at (study) {
+                \includegraphics[width=1cm,height=1cm]{./image/book2.png}
+            };
+            \node[text width=1cm, text height=1cm,yshift=-.8cm] at (programming) {
+                \includegraphics[width=1cm,height=1cm]{./image/computer.png}
+            };
+            \node[text width=.8cm, text height=.8cm,yshift=-.6cm] at (chemistry) {
+                \href{./chemistry/chemistry.pdf}{\includegraphics[width=.8cm,height=.8cm]{./image/atom.png}}
+            };
+            \node[text width=1cm, text height=1cm,yshift=-.7cm] at (math) {
+                \includegraphics[width=1cm,height=1cm]{./image/math.png}
+            };
+            \node[text width=.8cm, text height=.8cm,yshift=-.65cm] at (physics) {
+                \includegraphics[width=.8cm,height=.8cm]{./image/lever3.png}
+            };
+            \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (tex) {
+                \includegraphics[width=.5cm,height=.5cm]{./image/tex.png}
+            };
+            \node[text width=.8cm, text height=.8cm,yshift=-.7cm] at (ce) {
+                \includegraphics[width=.8cm,height=.8cm]{./image/engineering.png}
+            };
+            \node[text width=.6cm, text height=.6cm,yshift=-.5cm] at (java) {
+                \includegraphics[width=.6cm,height=.6cm]{./image/java.png}
+            };
+            \node[text width=.6cm, text height=.6cm,yshift=-.5cm] at (js) {
+                \includegraphics[width=.6cm,height=.6cm]{./image/javascript.png}
+            };
+            \node[text width=.4cm, text height=.4cm,yshift=-.35cm] at (linux) {
+                \includegraphics[width=.4cm,height=.4cm]{./image/linux.png}
+            };
+            \node[text width=.4cm, text height=.4cm,yshift=-.6cm] at (os) {
+                \includegraphics[width=.4cm,height=.4cm]{./image/os.png}
+            };
+            \node[text width=.9cm, text height=.9cm,yshift=-.85cm] at (dismath) {
+                \includegraphics[width=.9cm,height=.9cm]{./image/dismath.png}
+            };
+            \node[text width=.9cm, text height=.9cm,yshift=-.5cm] at (cpp) {
+                \includegraphics[width=.9cm,height=.9cm]{./image/cpp.png}
+            };
+            \node[text width=.7cm, text height=.7cm,yshift=-.5cm] at (c) {
+                \includegraphics[width=.7cm,height=.7cm]{./image/c.png}
+            };
+            \node[text width=.25cm, text height=.25cm,yshift=-.4cm] at (latex) {
+                \href{./programming/tex/latex/latex.pdf}{\includegraphics[width=.4cm,height=.4cm]{./image/latex.png}}
+            };
+            \node[text width=.4cm, text height=.4cm,yshift=-.5cm] at (mysql) {
+                \href{./programming/mysql/mysql.pdf}{\includegraphics[width=.4cm,height=.4cm]{./image/mysql.png}}
+            };
+            \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (electronics) {
+                \href{./physics/electronics/electronics.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/electronics2.png}}
+            };
+            \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (game) {
+                \includegraphics[width=.5cm,height=.5cm]{./image/game.png}
+            };
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{inctext}
+%------------------------------------------------------------ List ------------------------------------------------------------%
+\newpage
+\section{Study}
+\label{sec:study}
+\href{run:../../Documents/how_to_study_with_mind_maps.pdf}{\sout{How to Study with Mind Map}}
+\end{document}
