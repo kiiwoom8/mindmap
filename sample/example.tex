@@ -26,15 +26,16 @@
                 mindmap,
                 grow cyclic,
                 concept color=pink,
-                every node/.append style={concept,circular drop shadow},
-                level 1/.append style={sibling angle=360/5}
+                every node/.append style={concept,circular drop shadow,text width=4cm},
+                level 1/.append style={sibling angle=360/5},
+                every child/.append style={level distance=7cm,font=\fontsize{10pt}{12pt}}
             ]
             \node[root concept, fill=white](main){
                 \href{../mindmap.pdf}{Main}
             }
             child{
                     node{
-                            Sub
+                            papa
                         }
                 }
             ;

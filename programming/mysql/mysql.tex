@@ -26,8 +26,9 @@
                 mindmap,
                 grow cyclic,
                 concept color=red!60!green!100!blue!20,
-                every node/.append style={concept,circular drop shadow},
-                level 1/.append style={sibling angle=360/5}
+                every node/.append style={concept,circular drop shadow,text width=4cm},
+                level 1/.append style={sibling angle=360/5},
+                every child/.append style={level distance=7cm,font=\fontsize{10pt}{12pt}}
             ]
             \node[root concept, fill=white](mysql){
                 \href{../programming.pdf}{MySQL}
@@ -65,6 +66,36 @@
             child{
                     node{
                             \href{https://www.digitalocean.com/community/tutorials/introduction-to-queries-mysql}{Basics of MySQL}
+                        }
+                    child{
+                            node{
+                                    \href{https://gridscale.io/en/community/tutorials/mysql-datenbank-erstellen-loeschen/}{Create and Delete a MySQL Database}
+                                }
+                            child{
+                                    node{
+                                            \href{https://stackoverflow.com/questions/62127983/error-1449-hy000-the-user-specified-as-a-definer-mysql-infoschemalocalho}{[ERROR]\\infoschema}
+                                        }
+                                    child[every child/.append style={sibling angle=45}]{
+                                            node{
+                                                    \href{https://dev.mysql.com/doc/mysql-security-excerpt/8.0/en/reserved-accounts.html}{Re\-served Ac\-counts}
+                                                }
+                                            child{
+                                                    node{
+                                                            \href{https://dev.mysql.com/doc/refman/8.0/en/information-schema-introduction.html}{Info Schema}
+                                                        }
+                                                }
+                                            child{
+                                                    node{
+                                                            \href{https://www.educative.io/blog/what-are-database-schemas-examples}{What are database schemas?}
+                                                        }
+                                                }
+                                        }
+                                }
+                        }
+                }
+            child{
+                    node{
+                            \href{https://stackoverflow.com/questions/17666249/how-do-i-import-an-sql-file-using-the-command-line-in-mysql}{Import sql file}
                         }
                 }
             ;
