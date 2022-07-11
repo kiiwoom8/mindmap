@@ -27,7 +27,8 @@
                 grow cyclic,
                 concept color=red!80!green!100!blue!70,
                 every node/.append style={concept,circular drop shadow},
-                level 1/.append style={sibling angle=360/5}
+                level 1/.append style={sibling angle=360/5},
+                every child/.append style={level distance = 7cm,text width=4cm,font=\fontsize{10pt}{12pt}}
             ]
             \node[root concept, fill=white](ce){
                 \href{../mindmap.pdf}{Computer Engineering}
@@ -35,6 +36,11 @@
             child{
                     node(hc){
                             \href{../../../Documents/how_computers_really_work.pdf}{How Computers Work}
+                        }
+                    child[concept color=gray]{
+                            node{
+                                    \href{https://www.electronics-tutorials.ws/dccircuits/electrical-energy.html}{Electrical Energy and Power}
+                                }
                         }
                 }
             ;
@@ -48,8 +54,8 @@
             \node[text width=1.5cm, text height=1.5cm,yshift=-1.2cm] at (ce) {
                 \href{../mindmap.pdf}{\includegraphics[width=1.5cm,height=1.5cm]{../image/engineering.png}}
             };
-            \node[text width=.6cm, text height=.6cm,yshift=-.9cm] at (hc) {
-                \includegraphics[width=.6cm,height=.6cm]{../image/book2.png}
+            \node[text width=1.5cm, text height=1.5cm,yshift=-1.2cm] at (hc) {
+                \includegraphics[width=1.5cm,height=1.5cm]{../image/book2.png}
             };
         \end{pgfonlayer}
     \end{tikzpicture}

@@ -26,8 +26,9 @@
                 mindmap,
                 grow cyclic,
                 concept color=red!20!green!20!blue!100,
-                every node/.append style={concept,circular drop shadow,text=white},
-                level 1/.append style={sibling angle=360/5}
+                every node/.append style={concept,circular drop shadow,text=white,text width=4cm},
+                level 1/.append style={sibling angle=360/5},
+                every child/.append style={level distance=7cm,font=\fontsize{10pt}{12pt}}
             ]
             \node[root concept, fill=black](elec){
                 \href{../physics.pdf}{Electronics}
@@ -60,6 +61,11 @@
             child{
                     node{
                             \href{https://www.youtube.com/watch?v=mvuHsu8S6v8}{Volts, Amps, and Watts}
+                        }
+                }
+            child{
+                    node{
+                            \href{https://www.youtube.com/watch?v=fpknQWe_7As}{Conductors, Semiconductors, and Insulators}
                         }
                 }
             ;
