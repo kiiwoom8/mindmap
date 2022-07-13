@@ -45,12 +45,8 @@
                                 }
                         }
                     child{
-                            node(c){
-                                    \hyperref[sec:c]{C}}
-                        }
-                    child{
                             node(cpp){
-                                    \href{./programming/cpp/cpp.pdf}{C++}
+                                    \href{./programming/cpp/cpp.pdf}{C/C++}
                                 }
                         }
                     child{
@@ -81,6 +77,11 @@
                     child{
                             node(git){
                                     \href{./programming/git/git.pdf}{Git}
+                                }
+                        }
+                    child{
+                            node(assem){
+                                    \href{./programming/assembly/assembly.pdf}{Assembly}
                                 }
                         }
                 }
@@ -129,7 +130,7 @@
                         }
                 };
             % Todo
-            \node[todo,yshift=-.8cm] at (mysql.south) {TODO:\\ Install MySQL};
+            \node[todo,xshift=-1cm,yshift=-.4cm] at (mysql.west) {TODO:\\ Install MySQL};
         \end{scope}
         % ------------------------ declare calendar ------------------------ %
         \tiny
@@ -205,9 +206,6 @@
             \node[text width=.9cm, text height=.9cm,yshift=-.5cm] at (cpp) {
                 \href{./programming/cpp/cpp.pdf}{\includegraphics[width=.9cm,height=.9cm]{./image/cpp.png}}
             };
-            \node[text width=.7cm, text height=.7cm,yshift=-.5cm] at (c) {
-                \includegraphics[width=.7cm,height=.7cm]{./image/c.png}
-            };
             \node[text width=.25cm, text height=.25cm,yshift=-.4cm] at (latex) {
                 \href{./programming/tex/latex/latex.pdf}{\includegraphics[width=.4cm,height=.4cm]{./image/latex.png}}
             };
@@ -222,6 +220,9 @@
             };
             \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (git) {
                 \href{./programming/git/git.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/git.png}}
+            };
+            \node[text width=.7cm, text height=.7cm,yshift=-.5cm] at (assem) {
+                \href{./programming/assembly/assembly.pdf}{\includegraphics[width=.7cm,height=.7cm]{./image/assembly.png}}
             };
         \end{pgfonlayer}
     \end{tikzpicture}
