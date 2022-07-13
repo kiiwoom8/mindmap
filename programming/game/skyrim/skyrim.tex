@@ -27,14 +27,15 @@
                 grow cyclic,
                 concept color=red!60!green!100!blue!20,
                 every node/.append style={concept,circular drop shadow},
-                level 1/.append style={sibling angle=360/5}
+                level 1/.append style={sibling angle=360/5},
+                every child/.append style={text width=4cm,level distance=7cm,font=\fontsize{10pt}{12pt},}
             ]
             \node[root concept, fill=white](skyrim){
                 \href{../game.pdf}{SKYRIM}
             }
             child{
                     node(sksep){
-                        \href{https://www.creationkit.com/index.php?title=SKSE_Plugin_Creation}{SKSE Plugin Creation}
+                        \href{https://www.creationkit.com/index.php?title=SKSE_Plugin_Creation}{SKSE\\Plugin Creation}
                         }
                 }
             child{
@@ -55,7 +56,7 @@
             \node[text width=1.3cm, text height=1.3cm,yshift=-1.1cm] at (skyrim) {
                 \href{run:../../../mindmap.pdf}{\includegraphics[width=1.3cm,height=1.3cm]{../../../image/skyrim2.png}}
             };
-        \draw[[-{Stealth[width=15pt, length=10pt,]},line width=5pt,color=yellow] (sksep) .. controls +(2,2) and +(2,-2) .. (ryan);
+        \draw[[-{Stealth[width=15pt, length=10pt,]},line width=5pt,color=yellow] (sksep) .. controls +(3,3) and +(3,-3) .. (ryan);
         \end{pgfonlayer}
     \end{tikzpicture}
 \end{inctext}
