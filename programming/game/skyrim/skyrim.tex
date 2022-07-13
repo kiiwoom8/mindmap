@@ -6,7 +6,7 @@
 \usepackage{hyperref}
 
 \newcommand{\leftcoordinate}{-15cm}
-\usetikzlibrary{mindmap,shadows,calendar,fadings}
+\usetikzlibrary{mindmap,shadows,calendar,fadings,arrows.meta}
 \tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
 \hypersetup{
     colorlinks=false,
@@ -33,10 +33,15 @@
                 \href{../game.pdf}{SKYRIM}
             }
             child{
-                    node{
-                            SKSE
+                    node(sksep){
+                        \href{https://www.creationkit.com/index.php?title=SKSE_Plugin_Creation}{SKSE Plugin Creation}
                         }
                 }
+            child{
+                node(ryan){
+                    \href{https://github.com/Ryan-rsm-McKenzie/CommonLibSSE/wiki/Getting-Started}{Ryan's\\SKSE Tutorial}
+                }
+            }
             ;
         \end{scope}
         % ------------------------ background ------------------------ %
@@ -50,6 +55,7 @@
             \node[text width=1.3cm, text height=1.3cm,yshift=-1.1cm] at (skyrim) {
                 \href{run:../../../mindmap.pdf}{\includegraphics[width=1.3cm,height=1.3cm]{../../../image/skyrim2.png}}
             };
+        \draw[[-{Stealth[width=15pt, length=10pt,]},line width=5pt,color=yellow] (sksep) .. controls +(2,2) and +(2,-2) .. (ryan);
         \end{pgfonlayer}
     \end{tikzpicture}
 \end{inctext}
