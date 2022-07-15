@@ -6,7 +6,7 @@
 \usepackage{hyperref}
 
 \newcommand{\leftcoordinate}{-15cm}
-\usetikzlibrary{mindmap,shadows,calendar,fadings}
+\usetikzlibrary{mindmap,shadows,calendar,fadings,arrows.meta}
 \tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
 \hypersetup{
     colorlinks=false,
@@ -43,13 +43,43 @@
                             \href{https://www.tutorialspoint.com/assembly_programming/assembly_introduction.htm}{Assembly\\introduction}
                         }
                 }
-            child{
+            child[every child/.append style={sibling angle=45}]{
                     node{
                             \href{https://www.tutorialspoint.com/assembly_programming/assembly_environment_setup.htm}{Environment Setup}
                         }
-                    child{
+                    child[concept color=red!80!green!100!blue!70]{
                             node{
                                     \href{https://github.com/netwide-assembler/nasm/blob/master/INSTALL}{NASM INSTALL}
+                                }
+                            child{
+                                    node(lmcx){
+                                            \href{https://www.computerhope.com/unix/umake.htm}{\sout{Linux make command}}
+                                        }
+                                }
+                            child{
+                                    node(lmc){
+                                            \href{https://www.javatpoint.com/linux-make-command}{Linux Make Command}
+                                        }
+                                }
+                            child{
+                                    node{
+                                            \href{https://www.reddit.com/r/linuxquestions/comments/42hb6f/what_is_the_difference_between_gnu_automake_and/}{Difference between GNU automake and GNU make}
+                                        }
+                                    child{
+                                            node{
+                                                    \href{https://www.gnu.org/software/automake/}{Automake}
+                                                }
+                                            child{
+                                                    node{
+                                                            \href{https://www.gnu.org/software/autoconf/autoconf.html}{Autoconf}
+                                                        }
+                                                    child{
+                                                            node{
+                                                                    \href{https://www.gnu.org/software/m4/manual/m4.html}{GNU M4}
+                                                                }
+                                                        }
+                                                }
+                                        }
                                 }
                         }
                 }
@@ -67,7 +97,10 @@
             \node[text width=1.6cm, text height=1.6cm,yshift=-1.1cm] at (comp) {
                 \href{https://godbolt.org/}{\includegraphics[width=1.6cm,height=1.6cm]{../../image/tool.png}}
             };
-
+            \node[text width=1cm, text height=1cm,yshift=-1.2cm] at (lmc) {
+                \href{https://godbolt.org/}{\includegraphics[width=1cm,height=1cm]{../../image/star.png}}
+            };
+            \draw[-{Stealth[width=15pt, length=10pt]},line width=5pt,color=red!80!green!100!blue!70] (lmcx.north) .. controls +(0,1) and +(1,0) .. (lmc.east);
         \end{pgfonlayer}
     \end{tikzpicture}
 \end{inctext}

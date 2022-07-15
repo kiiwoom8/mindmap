@@ -38,8 +38,13 @@
                             \href{https://www.youtube.com/watch?v=w82aSjLuD_8}{What is Voltage?}
                         }
                     child{
-                            node{
+                            node(habw){
                                     \href{https://www.science.org.au/curious/technology-future/batteries}{How a battery works}
+                                }
+                            child[concept color=gray]{
+                                    node{
+                                            \href{https://www.quora.com/Why-does-voltage-increase-when-batteries-are-connected-in-series-from-a-chemical-perspective-no-equations-or-analogies-and-just-intuition}{Why Volatage Increases when Connected as Series}
+                                        }
                                 }
                         }
                 }
@@ -79,8 +84,11 @@
             \node[text width=1cm, text height=1cm,yshift=-1cm] at (elec) {
                 \href{../../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../../image/electronics2.png}}
             };
-            \node[text width=1cm, text height=1cm,yshift=-.8cm] at (tae) {
+            \node[text width=1cm, text height=1cm,yshift=-1.1cm] at (tae) {
                 \includegraphics[width=1cm,height=1cm]{../../image/book2_2.png}
+            };
+            \node[text width=1cm, text height=1cm,yshift=-1cm] at (habw) {
+                \includegraphics[width=1cm,height=1cm]{../../image/star.png}
             };
         \end{pgfonlayer}
     \end{tikzpicture}
