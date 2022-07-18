@@ -57,6 +57,11 @@
                             node(js){
                                     \hyperref[sec:javascript]{Javascript}
                                 }
+                            child{
+                                    node(html){
+                                            \href{./programming/javascript/htmlcss/htmlcss.pdf}{HTML\\\&\\CSS}
+                                        }
+                                }
                         }
                     child{
                             node(mysql){
@@ -147,6 +152,7 @@
             ;
             % Todo
             \node[todo,xshift=-1cm,yshift=-.4cm] at (mysql.west) {TODO:\\ Install MySQL};
+            \node[todo,yshift=-.4cm] at (html.north) {TODO:\\ Create Search Bar};
         \end{scope}
         % ------------------------ declare calendar ------------------------ %
         \tiny
@@ -245,6 +251,9 @@
             };
             \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (biology) {
                 \href{./biology/biology.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/biology.png}}
+            };
+            \node[text width=1cm, text height=1cm,yshift=-1.4cm] at (html) {
+                \href{./programming/javascript/htmlcss/htmlcss.pdf}{\includegraphics[width=1cm,height=1cm]{./image/html.png}}
             };
         \end{pgfonlayer}
     \end{tikzpicture}

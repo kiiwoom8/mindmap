@@ -1,0 +1,82 @@
+\documentclass[12pt,a4paper,hidelinks]{article}
+
+\usepackage{ulem}
+\usepackage{incgraph}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\newcommand{\leftcoordinate}{-15cm}
+\usetikzlibrary{mindmap,shadows,calendar,fadings}
+\tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\begin{inctext}
+    \begin{tikzpicture}
+        \pgfdeclarelayer{background}
+        \pgfdeclarelayer{foreground}
+        \pgfsetlayers{background,main,foreground}
+        % ------------------------ declare mindmap ------------------------ %
+        \begin{scope}[
+                mindmap,
+                grow cyclic,
+                concept color=red!60!green!100!blue!20,
+                every node/.append style={concept,circular drop shadow,text width=4cm},
+                level 1/.append style={sibling angle=360/5},
+                every child/.append style={level distance=7cm,font=\fontsize{10pt}{12pt}}
+            ]
+            \node[root concept, fill=white](html){
+                \href{../javascript.pdf}{HTML\\\&\\CSS}
+            }
+            child{
+                    node{
+                            \href{https://www.geeksforgeeks.org/search-bar-using-html-css-and-javascript/}{Search Bar}
+                        }
+                    child{
+                            node{
+                                    \href{https://www.youtube.com/watch?v=9hnJsNIBq1g}{Search Bar Design}
+                                }
+                        }
+                }
+            child{
+                    node{
+                            \href{https://www.freecodecamp.org/news/how-to-use-html-to-open-link-in-new-tab/}{Open in New Tab}
+                        }
+                    child{
+                            node{
+                                    \href{https://css-tricks.com/targetblank/}{target=blank}
+                                }
+                        }
+                    child[concept color=gray]{
+                            node{
+                                    \href{https://stackoverflow.com/questions/2076299/how-to-close-current-tab-in-a-browser-window}{Close Current Tab}
+                                }
+                            child[concept color=gray]{
+                                    node{
+                                            \href{https://developer.mozilla.org/en-US/docs/Web/API/Window/close}{window.close()}
+                                        }
+                                }
+                        }
+                }
+            ;
+        \end{scope}
+        % ------------------------ background ------------------------ %
+        \begin{pgfonlayer}{background}
+
+        \end{pgfonlayer}
+        % ------------------------ foreground ------------------------ %
+        \begin{pgfonlayer}{foreground}
+            \node[text width=1cm, text height=1cm,yshift=-1.4cm] at (html) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../../../image/html.png}}
+            };
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{inctext}
+%------------------------------------------------------------ List ------------------------------------------------------------%
+\newpage
+\end{document}

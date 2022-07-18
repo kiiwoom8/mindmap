@@ -1,0 +1,82 @@
+\documentclass[12pt,a4paper,hidelinks]{article}
+
+\usepackage{ulem}
+\usepackage{incgraph}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+\newcommand{\leftcoordinate}{-15cm}
+\usetikzlibrary{mindmap,shadows,calendar,fadings}
+\tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\begin{inctext}
+    \begin{tikzpicture}
+        \pgfdeclarelayer{background}
+        \pgfdeclarelayer{foreground}
+        \pgfsetlayers{background,main,foreground}
+        % ------------------------ declare mindmap ------------------------ %
+        \begin{scope}[
+                mindmap,
+                grow cyclic,
+                concept color=pink,
+                every node/.append style={concept,circular drop shadow,text width=4cm},
+                level 1/.append style={sibling angle=360/6},
+                every child/.append style={level distance=7cm,font=\fontsize{10pt}{12pt}}
+            ]
+            \node[root concept, fill=white](main){
+                \href{../mindmap.pdf}{\$1,746}
+            }
+            child{
+                    node{
+                            Housing
+                        }
+                }
+            child[concept color=gray]{
+                    node{
+                            Transportation
+                        }
+                }
+            child[concept color=gray]{
+                    node{
+                            Income Taxes
+                        }
+                }
+            child{
+                    node{
+                            Food(\$38)
+                        }
+                }
+            child[concept color=gray]{
+                    node{
+                            Insurance
+                        }
+                }
+            child{
+                    node{
+                            Health Care
+                        }
+                }
+            ;
+        \end{scope}
+        % ------------------------ background ------------------------ %
+        \begin{pgfonlayer}{background}
+
+        \end{pgfonlayer}
+        % ------------------------ foreground ------------------------ %
+        \begin{pgfonlayer}{foreground}
+            \node[text width=1cm, text height=1cm,yshift=-1cm] at (main) {
+                \includegraphics[width=1cm,height=1cm]{../image/atom.png}
+            };
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{inctext}
+%------------------------------------------------------------ List ------------------------------------------------------------%
+\newpage
+\end{document}
