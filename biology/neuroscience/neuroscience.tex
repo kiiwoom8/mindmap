@@ -25,37 +25,17 @@
         \begin{scope}[
                 mindmap,
                 grow cyclic,
-                concept color=red!80!green!100!blue!70,
+                concept color=red!80!green!80!blue!70,
                 every node/.append style={concept,circular drop shadow,text width=4cm},
                 level 1/.append style={sibling angle=360/5},
                 every child/.append style={level distance=7cm,font=\fontsize{10pt}{12pt}}
             ]
-            \node[root concept, fill=white](linux){
-                \href{../../../mindmap.pdf}{Linux}
+            \node[root concept, fill=white](ns){
+                \href{../biology.pdf}{Neuroscience}
             }
             child{
-                    node(howl){
-                            \href{../../../../../Documents/how_linux_works.pdf}{How Linux Works}
-                        }
-                }
-            child{
                     node{
-                            \href{https://itsfoss.com/linux-daemons/}{What is Daemon}
-                        }
-                    child{
-                            node{
-                                    \href{https://www.quora.com/What-is-the-difference-between-running-a-process-in-background-and-running-as-a-daemon-process}{Daemon and Process}
-                                }
-                        }
-                }
-            child{
-                    node{
-                            \href{https://stackoverflow.com/questions/1895100/ubuntu-linux-library-path}{Linux Library Path}
-                        }
-                }
-            child{
-                    node{
-                            \href{https://itsfoss.com/what-is-flatpak/}{What is Flatpak}
+                            \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4476073/}{Compulsive Behaivor}
                         }
                 }
             ;
@@ -66,11 +46,8 @@
         \end{pgfonlayer}
         % ------------------------ foreground ------------------------ %
         \begin{pgfonlayer}{foreground}
-            \node[text width=1cm, text height=1cm,yshift=-1cm] at (linux) {
-                \href{../../../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../../../image/linux.png}}
-            };
-            \node[text width=.8cm, text height=.8cm,yshift=-.8cm] at (howl) {
-                \includegraphics[width=.8cm,height=.8cm]{../../../image/book2.png}
+            \node[text width=1cm, text height=1cm,yshift=-1.05cm] at (ns) {
+                \href{../../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../../image/ns.png}}
             };
         \end{pgfonlayer}
     \end{tikzpicture}

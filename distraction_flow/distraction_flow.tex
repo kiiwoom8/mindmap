@@ -1,0 +1,208 @@
+\documentclass[12pt,a4paper,hidelinks]{article}
+
+\usepackage{ulem}
+\usepackage{incgraph}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\newcommand{\leftcoordinate}{-15cm}
+\usetikzlibrary{mindmap,shadows,calendar,fadings,arrows.meta}
+\tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
+\hypersetup{
+    colorlinks=false,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\begin{document}
+\begin{inctext}
+    \begin{tikzpicture}
+        \pgfdeclarelayer{background}
+        \pgfdeclarelayer{foreground}
+        \pgfsetlayers{background,main,foreground}
+        % ------------------------ declare mindmap ------------------------ %
+        \begin{scope}[
+                mindmap,
+                grow cyclic,
+                concept color=red!60!green!100!blue!20,
+                every node/.append style={concept,circular drop shadow},
+                level 1/.append style={sibling angle=60},
+                every child/.append style={text width=4cm, level distance=7cm,font=\fontsize{10pt}{12pt}}
+            ]
+            \node[root concept, fill=white](start){
+                \href{../mindmap.pdf}{Distraction\\Flow}
+            }
+            child{
+                    node(boredom){
+                            \href{../../../Documents/the_stress_of_boredom_and_monotony.pdf}{Boredom}
+                        }
+                }
+            child{
+                    node{
+                            Frustration\\
+                            (Mental, Physical)
+                        }
+                    child{
+                            node(stress)[fill=red]{
+                                    \textcolor{white}{Stress}
+                                }
+                            child{
+                                    node{
+                                            Low Effort\\
+                                            Fast Reward
+                                        }
+                                    child{
+                                            node{
+                                                    Desire of\\
+                                                    Dopamine
+                                                }
+                                            child[sibling angle=90]{
+                                                    node(internet){
+                                                            Internet
+                                                        }
+                                                    child{
+                                                            node(shopping){
+                                                                    Shopping
+                                                                }
+                                                        }
+                                                    child[sibling angle=45,level distance=10cm]{
+                                                            node(relationship){
+                                                                    Shallow\\
+                                                                    Relationship
+                                                                }
+                                                            child{
+                                                                    node(massenger){
+                                                                            Massenger\\
+                                                                        }
+                                                                }
+                                                            child{
+                                                                    node(watching){
+                                                                            Watching
+                                                                        }
+                                                                    child{
+                                                                            node(youtube){
+                                                                                    \href{http://youtube.com}{Youtube}
+                                                                                }
+                                                                        }
+                                                                    child{
+                                                                            node(movie){
+                                                                                    Movie
+                                                                                }
+                                                                        }
+                                                                }
+                                                            child{
+                                                                    node(masturbation){
+                                                                            Masturbation
+                                                                        }
+                                                                }
+                                                            child{
+                                                                    node(game){
+                                                                            Game
+                                                                        }
+                                                                }
+                                                            child{
+                                                                    node(community){
+                                                                            \href{http://arca.live/tullius}{Community\\Sites}
+                                                                        }
+                                                                }
+                                                            child{
+                                                                    node(music){
+                                                                            Music
+                                                                        }
+                                                                }
+                                                        }
+                                                    child{
+                                                            node(knowledge){
+                                                                    Knowleddge\\
+                                                                    (Koean)
+                                                                }
+                                                            child{
+                                                                    node(wiki){
+                                                                            Wiki
+                                                                        }
+                                                                }
+                                                        }
+                                                }
+                                        }
+                                }
+                            child[sibling angle=90]{
+                                    node{
+                                            \href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4476073/}{Compulsive\\Behavior}
+                                        }
+                                }
+                        }
+                }
+            child{
+                    node(conflict){
+                            Conflict
+                        }
+                }
+            ;
+            \path (conflict) to[circle connection bar switch color=from (red!60!green!100!blue!20) to (red!60!green!100!blue!20)] (stress);
+            \path (boredom) to[circle connection bar switch color=from (red!60!green!100!blue!20) to (red!60!green!100!blue!20)] (stress);
+            \path (community) to[circle connection bar switch color=from (red!60!green!100!blue!20) to (red!60!green!100!blue!20)] (game);
+            \path (youtube) to[circle connection bar switch color=from (red!60!green!100!blue!20) to (red!60!green!100!blue!20)] (movie);
+            \path (watching) to[circle connection bar switch color=from (red!60!green!100!blue!20) to (red!60!green!100!blue!20)] (masturbation);
+            \path (game) to[circle connection bar switch color=from (red!60!green!100!blue!20) to (red!60!green!100!blue!20)] (masturbation);
+        \end{scope}
+        % ------------------------ background ------------------------ %
+        \begin{pgfonlayer}{background}
+            \draw[{stealth[width=15pt,length=10pt]}-{stealth[width=15pt,length=10pt]},line width=5pt,color=gray](knowledge)--(youtube);
+            \draw[{stealth[width=15pt,length=10pt]}-{stealth[width=15pt,length=10pt]},line width=5pt,color=gray](knowledge)--(community);
+            \draw[{stealth[width=15pt,length=10pt]}-{stealth[width=15pt,length=10pt]},line width=5pt,color=gray](youtube)--(game);
+            \draw[{stealth[width=15pt,length=10pt]}-{stealth[width=15pt,length=10pt]},line width=5pt,color=gray](music)--(youtube);
+            \draw[{stealth[width=15pt,length=10pt]}-{stealth[width=15pt,length=10pt]},line width=5pt,color=gray](music)--(game);
+            \draw[-{stealth[width=15pt,length=10pt]},line width=5pt,color=gray](movie.east)..controls +(5,10) and +(15,0)..(wiki);
+        \end{pgfonlayer}
+        % ------------------------ foreground ------------------------ %
+        \begin{pgfonlayer}{foreground}
+            \node[text width=2cm, text height=2cm,yshift=-1.1cm] at (youtube) {
+                \href{http://youtube.com}{\includegraphics[width=2cm,height=2cm]{../image/youtube.png}}
+            };
+            \node[text width=1.8cm, text height=1.8cm,yshift=-1.1cm] at (masturbation) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1.8cm,height=1.8cm]{../image/masturbation.png}}
+            };
+            \node[text width=1cm, text height=1cm,yshift=-1.1cm] at (game) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../image/game.png}}
+            };
+            \node[text width=1cm, text height=1cm,yshift=-1.1cm] at (massenger) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../image/massenger.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (movie) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{../image/movie.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.2cm] at (community) {
+                \href{http://arca.live/tullius}{\includegraphics[width=1.2cm,height=1.2cm]{../image/community.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (internet) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{../image/internet.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (wiki) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{../image/wiki.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (shopping) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{../image/shopping.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (music) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{../image/music.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.2cm] at (relationship) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{../image/relationship.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1cm] at (watching) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{../image/tv.png}}
+            };
+            \node[text width=1cm, text height=1cm,yshift=-1.1cm] at (knowledge) {
+                \href{../../../mindmap.pdf}{\includegraphics[width=1cm,height=1cm]{../image/knowledge.png}}
+            };
+
+            % \draw[-{Stealth[width=15pt, length=10pt,]},line width=5pt,color=gray](conflict) -- (stress);
+            % \draw[-{Stealth[width=15pt, length=10pt,]},line width=5pt,color=gray](boredom) -- (stress);
+        \end{pgfonlayer}
+    \end{tikzpicture}
+\end{inctext}
+%------------------------------------------------------------ List ------------------------------------------------------------%
+\newpage
+\end{document}

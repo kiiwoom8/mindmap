@@ -5,7 +5,10 @@
 \usepackage{tikz}
 \usepackage{hyperref}
 
-\newcommand{\leftcoordinate}{-15cm}
+\newcommand{\leftcoordinate}{-30cm}
+\newcommand{\upcoordinate}{17cm}
+\newcommand{\downcoordinate}{-25.5cm}
+\newcommand{\rightcoordinate}{15cm}
 \usetikzlibrary{mindmap,shadows,calendar,fadings}
 \tikzset{todo/.append style={annotation,above,concept color=white,draw=black,text width=2cm,align=center}}
 \hypersetup{
@@ -27,15 +30,16 @@
                 mindmap,
                 grow cyclic,
                 concept color=black,
+                every child/.append style={text width=4cm,level distance=7cm,font=\fontsize{10pt}{12pt}},
                 every node/.append style={concept,circular drop shadow},
-                level 1/.append style={sibling angle=360/5}
+                level 1/.append style={sibling angle=360/6}
             ]
             %Study
             \node[root concept, fill=white](study){
                 \hyperref[sec:study]{Study}
             }
             %Programming
-            child[every child/.append style={sibling angle=40},level distance=7cm,concept color=red!60!green!100!blue!20, text width=2.5cm]{
+            child[every child/.append style={sibling angle=40},level distance=14cm,concept color=red!60!green!100!blue!20]{
                     node(programming){
                             \href{run:./programming/programming.pdf}{Programming}
                         }
@@ -86,11 +90,11 @@
                         }
                 }
             %Mathematics
-            child[concept color=red!30!green!100!blue!100, text width=2.5cm]{
+            child[concept color=red!30!green!100!blue!100]{
                     node(math){
                             \href{./mathematics/mathematics.pdf}{Mathematics}
                         }
-                    child[text width=2.5cm,level distance=4cm]{
+                    child{
                             node(dismath){
                                     \href{run:./mathematics/discrete_mathematics/discrete_mathematics.pdf}{Discrete Mathematics}
                                 }
@@ -113,6 +117,17 @@
                             \href{./chemistry/chemistry.pdf}{Chemistry}
                         }
                 }
+            %Biology
+            child[concept color=red!80!green!80!blue!70]{
+                    node(biology){
+                            \href{./biology/biology.pdf}{Biology}
+                        }
+                    child{
+                            node(ns){
+                                    \href{./biology/neuroscience/neuroscience.pdf}{Neuroscience}
+                                }
+                        }
+                }
             %Computer Engineering
             child[concept color=red!80!green!100!blue!70]{
                     node(ce){
@@ -128,7 +143,8 @@
                                         }
                                 }
                         }
-                };
+                }
+            ;
             % Todo
             \node[todo,xshift=-1cm,yshift=-.4cm] at (mysql.west) {TODO:\\ Install MySQL};
         \end{scope}
@@ -155,74 +171,80 @@
         };
         % ------------------------ background ------------------------ %
         \begin{pgfonlayer}{background}
-            \fill[orange] rectangle +(\leftcoordinate,11);
-            \fill[yellow] rectangle +(\leftcoordinate,-16.5);
-            \fill[pink] rectangle +(12.5,11);
-            \fill[teal] rectangle +(12.5,-16.5);
+            \fill[orange] rectangle +(\leftcoordinate,\upcoordinate);
+            \fill[yellow] rectangle +(\leftcoordinate,\downcoordinate);
+            \fill[pink] rectangle +(\rightcoordinate,\upcoordinate);
+            \fill[teal] rectangle +(\rightcoordinate,\downcoordinate);
 
             \shade[bottom color=yellow,top color=orange] (study)+(0,-1) rectangle +(\leftcoordinate,1);
-            \shade[left color=orange, right color=pink] (study)+(-1,0) rectangle +(1,11);
-            \shade[top color=pink, bottom color=teal] (study)+(0,-1) rectangle +(12.5,1);
-            \shade[left color=yellow, right color=teal] (study)+(-1,0) rectangle +(1,-16.5);
+            \shade[left color=orange, right color=pink] (study)+(-1,0) rectangle +(1,\upcoordinate);
+            \shade[top color=pink, bottom color=teal] (study)+(0,-1) rectangle +(\rightcoordinate,1);
+            \shade[left color=yellow, right color=teal] (study)+(-1,0) rectangle +(1,\downcoordinate);
         \end{pgfonlayer}
         % ------------------------ foreground ------------------------ %
         \begin{pgfonlayer}{foreground}
             \node[text width=1cm, text height=1cm,yshift=-.8cm] at (study) {
                 \includegraphics[width=1cm,height=1cm]{./image/book2.png}
             };
-            \node[text width=1cm, text height=1cm,yshift=-.8cm] at (programming) {
+            \node[text width=1cm, text height=1cm,yshift=-1cm] at (programming) {
                 \href{./programming/programming.pdf}{\includegraphics[width=1cm,height=1cm]{./image/computer.png}}
             };
-            \node[text width=.8cm, text height=.8cm,yshift=-.65cm] at (chemistry) {
-                \href{./chemistry/chemistry.pdf}{\includegraphics[width=.8cm,height=.8cm]{./image/atom.png}}
+            \node[text width=1.3cm, text height=1.3cm,yshift=-1cm] at (chemistry) {
+                \href{./chemistry/chemistry.pdf}{\includegraphics[width=1.3cm,height=1.3cm]{./image/atom.png}}
             };
-            \node[text width=1cm, text height=1cm,yshift=-.7cm] at (math) {
-                \href{./mathematics/mathematics.pdf}{\includegraphics[width=1cm,height=1cm]{./image/math.png}}
+            \node[text width=1.5cm, text height=1.5cm,yshift=-1.1cm] at (math) {
+                \href{./mathematics/mathematics.pdf}{\includegraphics[width=1.5cm,height=1.5cm]{./image/math.png}}
             };
-            \node[text width=.8cm, text height=.8cm,yshift=-.65cm] at (physics) {
-                \href{./physics/physics.pdf}{\includegraphics[width=.8cm,height=.8cm]{./image/lever3.png}}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1cm] at (physics) {
+                \href{./physics/physics.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/lever3.png}}
             };
-            \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (tex) {
-                \href{./programming/tex/tex.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/tex.png}}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (tex) {
+                \href{./programming/tex/tex.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/tex.png}}
             };
-            \node[text width=.8cm, text height=.8cm,yshift=-.7cm] at (ce) {
-                \includegraphics[width=.8cm,height=.8cm]{./image/engineering.png}
+            \node[text width=1.8cm, text height=1.8cm,yshift=-1.2cm] at (ce) {
+                \includegraphics[width=1.8cm,height=1.8cm]{./image/engineering.png}
             };
-            \node[text width=.6cm, text height=.6cm,yshift=-.5cm] at (java) {
-                \includegraphics[width=.6cm,height=.6cm]{./image/java.png}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1cm] at (java) {
+                \includegraphics[width=1.2cm,height=1.2cm]{./image/java.png}
             };
-            \node[text width=.6cm, text height=.6cm,yshift=-.5cm] at (js) {
-                \includegraphics[width=.6cm,height=.6cm]{./image/javascript.png}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1cm] at (js) {
+                \includegraphics[width=1.2cm,height=1.2cm]{./image/javascript.png}
             };
-            \node[text width=.4cm, text height=.4cm,yshift=-.35cm] at (linux) {
-                \href{./computer_engineering/os/linux/linux.pdf}{\includegraphics[width=.4cm,height=.4cm]{./image/linux.png}}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (linux) {
+                \href{./computer_engineering/os/linux/linux.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/linux.png}}
             };
-            \node[text width=.4cm, text height=.4cm,yshift=-.6cm] at (os) {
-                \includegraphics[width=.4cm,height=.4cm]{./image/os.png}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (os) {
+                \includegraphics[width=1.2cm,height=1.2cm]{./image/os.png}
             };
-            \node[text width=.9cm, text height=.9cm,yshift=-.85cm] at (dismath) {
-                \href{./mathematics/discrete_mathematics/discrete_mathematics.pdf}{\includegraphics[width=.9cm,height=.9cm]{./image/dismath.png}}
+            \node[text width=1.4cm, text height=1.4cm,yshift=-1cm] at (dismath) {
+                \href{./mathematics/discrete_mathematics/discrete_mathematics.pdf}{\includegraphics[width=1.4cm,height=1.4cm]{./image/dismath.png}}
             };
-            \node[text width=.9cm, text height=.9cm,yshift=-.5cm] at (cpp) {
-                \href{./programming/cpp/cpp.pdf}{\includegraphics[width=.9cm,height=.9cm]{./image/cpp.png}}
+            \node[text width=1.8cm, text height=1.8cm,yshift=-1cm] at (cpp) {
+                \href{./programming/cpp/cpp.pdf}{\includegraphics[width=1.8cm,height=1.8cm]{./image/cpp.png}}
             };
-            \node[text width=.25cm, text height=.25cm,yshift=-.4cm] at (latex) {
-                \href{./programming/tex/latex/latex.pdf}{\includegraphics[width=.4cm,height=.4cm]{./image/latex.png}}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (latex) {
+                \href{./programming/tex/latex/latex.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/latex.png}}
             };
-            \node[text width=.4cm, text height=.4cm,yshift=-.5cm] at (mysql) {
-                \href{./programming/mysql/mysql.pdf}{\includegraphics[width=.4cm,height=.4cm]{./image/mysql.png}}
+            \node[text width=1.1cm, text height=1.1cm,yshift=-1.05cm] at (mysql) {
+                \href{./programming/mysql/mysql.pdf}{\includegraphics[width=1.1cm,height=1.1cm]{./image/mysql.png}}
             };
-            \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (electronics) {
-                \href{./physics/electronics/electronics.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/electronics2.png}}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (electronics) {
+                \href{./physics/electronics/electronics.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/electronics2.png}}
             };
-            \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (game) {
-                \href{./programming/game/game.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/game.png}}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1cm] at (game) {
+                \href{./programming/game/game.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/game.png}}
             };
-            \node[text width=.5cm, text height=.5cm,yshift=-.5cm] at (git) {
-                \href{./programming/git/git.pdf}{\includegraphics[width=.5cm,height=.5cm]{./image/git.png}}
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (git) {
+                \href{./programming/git/git.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/git.png}}
             };
-            \node[text width=.7cm, text height=.7cm,yshift=-.5cm] at (assem) {
-                \href{./programming/assembly/assembly.pdf}{\includegraphics[width=.7cm,height=.7cm]{./image/assembly.png}}
+            \node[text width=1.5cm, text height=1.5cm,yshift=-1.1cm] at (assem) {
+                \href{./programming/assembly/assembly.pdf}{\includegraphics[width=1.5cm,height=1.5cm]{./image/assembly.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (ns) {
+                \href{./biology/neuroscience/neuroscience.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/ns.png}}
+            };
+            \node[text width=1.2cm, text height=1.2cm,yshift=-1.1cm] at (biology) {
+                \href{./biology/biology.pdf}{\includegraphics[width=1.2cm,height=1.2cm]{./image/biology.png}}
             };
         \end{pgfonlayer}
     \end{tikzpicture}
@@ -232,5 +254,6 @@
 \section{Study}
 \label{sec:study}
 \href{run:../../Documents/how_to_study_with_mind_maps.pdf}{\sout{How to Study with Mind Map}}\\
-\href{https://www.sciencedirect.com/science/article/pii/S009265662200040X}{Deprivation curiosity is associated with excessive openness to inaccurate information}
+\href{https://www.sciencedirect.com/science/article/pii/S009265662200040X}{Deprivation curiosity is associated with excessive openness to inaccurate information}\\
+\href{./distraction_flow/distraction_flow.pdf}{Distraction Flow}
 \end{document}

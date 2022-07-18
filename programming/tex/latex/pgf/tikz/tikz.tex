@@ -27,7 +27,8 @@
                 grow cyclic,
                 concept color=red!60!green!100!blue!20,
                 every node/.append style={concept,circular drop shadow},
-                level 1/.append style={sibling angle=360/5}
+                level 1/.append style={sibling angle=360/5},
+                every child/.append style={text width=4cm, level distance=7cm,font=\fontsize{10pt}{12pt}}
             ]
             \node[root concept, fill=white](tikz){
                 \href{../../latex.pdf}{Tikz}
@@ -35,6 +36,11 @@
             child{
                     node{
                             \href{https://tex.stackexchange.com/questions/36109/making-tikz-nodes-hyperlinkable}{Making TikZ nodes hyperlinkable}
+                        }
+                }
+            child[concept color=gray]{
+                    node{
+                            \href{https://tex.stackexchange.com/questions/159296/curved-bar-in-mindmap}{Circle Connection Bar}
                         }
                 }
             ;
